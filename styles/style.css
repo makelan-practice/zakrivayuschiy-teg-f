@@ -110,6 +110,39 @@
   height: auto;
 }
 
+.card__image-item-1 {
+  filter: none;
+}
+
+.card__image-item-2 {
+  filter: brightness(50%);
+}
+
+.card__image-item-3 {
+  filter: sepia(100%);
+}
+
+.card__image-item-4 {
+  filter: brightness(0.7) saturate(2);
+}
+
+.card__image-item-5 {
+  filter: invert(100%);
+}
+
+.card__image-item-6 {
+  filter: saturate(3);
+
+}
+
+.card__image-item-7 {
+  filter: blur(15px);
+}
+
+.card__image-item-8 {
+  filter: hue-rotate(90deg) opacity(0.7);
+}
+
 .overlay-text {
   position: absolute;
   top: 10%;
@@ -141,6 +174,7 @@
 }
 
 .interaction-button {
+  position: relative;
   border: 2px solid var(--text-color);
   padding: 12.5px 37px;
   cursor: pointer;
@@ -148,8 +182,16 @@
   text-align: center;
 }
 
+.interaction-button-text {
+  font-family: var(--accent-font);
+  line-height: 90%;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-color);
+}
 
 .memory-button {
+  position: relative;
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -161,15 +203,50 @@
   margin: 50px 100px;
 }
 
-.interaction-button-text {
-  font-family: var(--accent-font);
-  line-height: 90%;
-  font-weight: 400;
-  font-size: 14px;
-  color: var(--text-color);
+.interaction-button:focus,
+.memory-button:focus,
+.modal__ok-btn:focus {
+  transition: box-shadow 0.3s ease;
+  outline: none;
+  box-shadow: 2px 2px 0 0 black;
 }
 
+.interaction-button span, 
+.memory-button span, 
+.modal__ok-btn span {
+  position: relative;
+  z-index: 1;
+  color: white;
+  mix-blend-mode: difference;
+}
 
+.memory-button .like-icon {
+  position: relative;
+  z-index: 1;
+  fill: white;
+  mix-blend-mode: difference;
+}
+
+.interaction-button::before, 
+.memory-button::before,
+.modal__ok-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+}
+
+.interaction-button:hover::before,
+.memory-button:hover:before, 
+.modal__ok-btn:hover:before {
+  transform: scaleX(1);
+}
 
 .modal {
   display: none;
@@ -178,7 +255,6 @@
   background: transparent;
 }
 
-/* Когда открыт — отображается с фоном и двумя колонками */
 .modal[open] {
   display: grid;
   place-items: center;
@@ -187,12 +263,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  max-width: 353px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
 }
 
-/* Стиль затемнённого фона */
-.modal::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
+body:has(.modal[open]) {
+  overflow: hidden;
 }
 
 /* Контент внутри модального окна */
@@ -204,6 +282,7 @@
   grid-template-columns: auto 1fr;
   gap: 20px;
   align-items: center;
+  max-width: 353px;
 }
 
 /* Текст */
@@ -218,22 +297,21 @@
 
 /* Кнопка OK */
 .modal__ok-btn {
-  font-family: var(--accent-font);
-  text-transform: uppercase;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 90%;
+  position: relative;
   grid-column: span 2;
   margin-top: 20px;
   padding: 12.5px 0px;
   border: 2px solid black;
 }
 
-
-
-
-
+.modal__ok-btn-text{
+  font-family: var(--accent-font);
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 90%;
+}
 
 /* Пример использования акцентного шрифта */
 .accent-text {
