@@ -211,8 +211,8 @@
   box-shadow: 2px 2px 0 0 black;
 }
 
-.interaction-button span, 
-.memory-button span, 
+.interaction-button span,
+.memory-button span,
 .modal__ok-btn span {
   position: relative;
   z-index: 1;
@@ -220,14 +220,40 @@
   mix-blend-mode: difference;
 }
 
+.card__icon-button {
+  border: 2px solid transparent;
+  /* прозрачная граница в обычном состоянии */
+  outline: none;
+  /* убираем стандартную обводку */
+  transition: border-color 0.3s ease;
+  /* плавный переход цвета границы */
+  background: none;
+  /* убираем фон */
+}
+
+.card__icon-button:focus {
+  outline: none;
+  /* на всякий случай */
+}
+
+.card__icon-button:focus-visible {
+  border-color: black;
+  /* акцентная рамка */
+}
+
+.like-icon {
+  margin: 5px 5px;
+}
+
 .memory-button .like-icon {
   position: relative;
   z-index: 1;
   fill: white;
   mix-blend-mode: difference;
+
 }
 
-.interaction-button::before, 
+.interaction-button::before,
 .memory-button::before,
 .modal__ok-btn::before {
   content: '';
@@ -243,7 +269,7 @@
 }
 
 .interaction-button:hover::before,
-.memory-button:hover:before, 
+.memory-button:hover:before,
 .modal__ok-btn:hover:before {
   transform: scaleX(1);
 }
@@ -304,7 +330,7 @@ body:has(.modal[open]) {
   border: 2px solid black;
 }
 
-.modal__ok-btn-text{
+.modal__ok-btn-text {
   font-family: var(--accent-font);
   text-transform: uppercase;
   font-style: normal;
