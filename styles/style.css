@@ -68,7 +68,6 @@
   flex-direction: column;
   background-color: var(--card-background);
   width: 100%;
-  /*margin-bottom: 20px;*/
   overflow: hidden;
   border: 2px solid var(--text-color);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -105,7 +104,6 @@
   font-weight: 410;
   font-size: 18px;
   line-height: 21px;
-  /*margin: 25px;*/
   font-variation-settings: 'slnt' 0;
   color: var(--text-color);
   align-self: flex-start;
@@ -162,16 +160,18 @@
   line-height: 14px;
   font-weight: 400;
   opacity: 0.5;
-  color: #000000;
+  color: var(--color-black);
   text-transform: uppercase;
   pointer-events: none;
+  text-shadow: none;
 }
 
-@supports (mix-blend-mode: hard-light) {
+@supports (mix-blend-mode: hard-light) and 
+         ((-webkit-text-stroke: 1px var(--color-white)) or (text-stroke: 1px var(--color-white))) {
   .overlay-text {
     mix-blend-mode: hard-light;
-    -webkit-text-stroke: 1px #FFFFFF;
-    text-shadow: none;
+    -webkit-text-stroke: 1px var(--color-white);
+    text-stroke: 1px var(--color-white);
   }
 }
 
@@ -179,14 +179,12 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
-  /*margin: 25px;*/
   align-self: flex-end;
 }
 
 .card__like-button {
   position: relative;
   border: 2px solid var(--text-color);
-  /*padding: 12.5px 37px;*/
   cursor: pointer;
   display: block;
   text-align: center;
@@ -208,8 +206,8 @@
   gap: 8px;
   align-items: center;
   padding: 17px 20px;
-  border: 2px solid black;
-  background-color: white;
+  border: 2px solid var(--color-black);
+  background-color: var(--color-white);
   cursor: pointer;
 }
 
@@ -218,7 +216,7 @@
 .modal__ok-btn:focus {
   transition: box-shadow 0.3s ease;
   outline: none;
-  box-shadow: 2px 2px 0 0 black;
+  box-shadow: 2px 2px 0 0 var(--color-black);
 }
 
 .card__like-button span,
@@ -226,7 +224,7 @@
 .modal__ok-btn span {
   position: relative;
   z-index: 1;
-  color: white;
+  color: var(--color-white);
   mix-blend-mode: difference;
 }
 
@@ -244,8 +242,7 @@
 }
 
 .card__icon-button:focus-visible {
-  border-color: black;
-  /* акцентная рамка */
+  border-color: var(--color-black);
 }
 
 .like-icon {
@@ -348,7 +345,7 @@
 .memory-button .like-icon {
   position: relative;
   z-index: 1;
-  fill: white;
+  fill: var(--color-white);
   mix-blend-mode: difference;
 
 }
@@ -362,7 +359,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-color: var(--color-black);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease-in-out;
@@ -405,8 +402,8 @@ body:has(.modal[open]) {
 
 /* Контент внутри модального окна */
 .modal__content {
-  background-color: white;
-  border: 2px solid black;
+  background-color: var(--color-white);
+  border: 2px solid var(--color-black);
   padding: 30px;
   display: grid;
   grid-template-columns: auto 1fr;
@@ -415,7 +412,11 @@ body:has(.modal[open]) {
   max-width: 353px;
 }
 
-/* Текст */
+.modal__content .like-icon{
+  width: 39px;
+  height: 39px;
+}
+
 .modal__text {
   font-family: var(--accent-font);
   font-style: normal;
@@ -425,13 +426,12 @@ body:has(.modal[open]) {
   text-transform: uppercase;
 }
 
-/* Кнопка OK */
 .modal__ok-btn {
   position: relative;
   grid-column: span 2;
   margin-top: 20px;
   padding: 12.5px 0px;
-  border: 2px solid black;
+  border: 2px solid var(--color-black);
 }
 
 .modal__ok-btn-text {
@@ -443,28 +443,6 @@ body:has(.modal[open]) {
   line-height: 90%;
 }
 
-/* Пример использования акцентного шрифта */
-.accent-text {
-  font-family: var(--accent-font);
-}
-
-/* Пример использования разных весов Inter */
-.card__title {
-  font-variation-settings: 'wght' var(--title-font-weight);
-}
-
-/*.card__icon-button{
-
-    width: 27px;
-  height: 24px;
-  background-image: url("../svg/anim.svg");
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  animation: likeAnimation 600ms steps(6) forwards;
-
-}*/
-
-
 @keyframes likeAnimation {
   0% {
     background-position: 0 0;
@@ -472,6 +450,5 @@ body:has(.modal[open]) {
 
   100% {
     background-position: -135px 0;
-    /* 27px * 5 = 135px */
   }
 }
