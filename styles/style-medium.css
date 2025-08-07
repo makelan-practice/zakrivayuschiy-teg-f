@@ -1,0 +1,16 @@
+  .header {
+    padding: 130px 0;
+    margin: 98px 0px;
+  }
+
+  .card__image {
+    min-height: 696px;
+  }
+
+  .memory-button {
+    padding: 11.5px 13px;
+  }
+
+  .memory-button {
+    flex-direction: row;
+  }
