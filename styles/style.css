@@ -412,7 +412,7 @@ body:has(.modal[open]) {
   max-width: 353px;
 }
 
-.modal__content .like-icon{
+.modal__content .like-icon {
   width: 39px;
   height: 39px;
 }

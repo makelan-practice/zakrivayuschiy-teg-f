@@ -9,8 +9,5 @@
 
   .memory-button {
     padding: 11.5px 13px;
-  }
-
-  .memory-button {
     flex-direction: row;
   }
