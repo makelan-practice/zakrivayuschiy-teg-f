@@ -153,8 +153,8 @@
 
 .overlay-text {
   position: absolute;
-  top: 10%;
-  right: 10%;
+  top: 7%;
+  right: 7%;
   font-family: var(--accent-font);
   font-size: 14px;
   line-height: 14px;
@@ -166,8 +166,7 @@
   text-shadow: none;
 }
 
-@supports (mix-blend-mode: hard-light) and 
-         ((-webkit-text-stroke: 1px var(--color-white)) or (text-stroke: 1px var(--color-white))) {
+@supports (mix-blend-mode: hard-light) and ((-webkit-text-stroke: 1px var(--color-white)) or (text-stroke: 1px var(--color-white))) {
   .overlay-text {
     mix-blend-mode: hard-light;
     -webkit-text-stroke: 1px var(--color-white);
