@@ -245,6 +245,7 @@
   width: 28px;
   height: 28px;
   transform-origin: center;
+  fill: var(--color-black);
 }
 
 .like-icon .contour {
@@ -310,7 +311,7 @@
   animation: flash-sparks 0.3s ease-in 0.3s 1 forwards;
 }
 
-.memory-button .like-icon {
+.memory-button svg {
   position: relative;
   z-index: 1;
   fill: var(--color-white);
@@ -372,11 +373,6 @@ body:has(.modal[open]) {
   gap: 20px;
   align-items: center;
   max-width: 353px;
-}
-
-.modal__content .like-icon {
-  width: 39px;
-  height: 39px;
 }
 
 .modal__text {
