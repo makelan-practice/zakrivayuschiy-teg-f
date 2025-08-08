@@ -52,7 +52,6 @@
   font-family: var(--accent-font), sans-serif;
   font-size: clamp(14px, 1vw + 10.25px, 23px);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
   font-weight: 400;
 }
 
@@ -68,9 +67,9 @@
   flex-direction: column;
   background-color: var(--card-background);
   width: 100%;
-  overflow: hidden;
+  /*overflow: hidden;*/
   border: 2px solid var(--text-color);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
 
 }
 
@@ -107,7 +106,7 @@
   font-variation-settings: 'slnt' 0;
   color: var(--text-color);
   align-self: flex-start;
-  letter-spacing: 0.01em;
+  /*letter-spacing: 0.01em;*/
 }
 
 .card__image {
@@ -118,36 +117,31 @@
   object-position: right;
 }
 
-.card__item-1 .card__image {
-  filter: none;
-}
-
-.card__item-2 .card__image {
+.filter-brightness {
   filter: brightness(50%);
 }
 
-
-.card__item-3 .card__image {
+.filter-sepia {
   filter: sepia(100%);
 }
 
-.card__item-4 .card__image {
+.filter-bright-saturate {
   filter: brightness(0.7) saturate(2);
 }
 
-.card__item-5 .card__image {
+.filter-invert {
   filter: invert(100%);
 }
 
-.card__item-6 .card__image {
+.filter-saturate {
   filter: saturate(3);
 }
 
-.card__item-7 .card__image {
+.filter-blur {
   filter: blur(15px);
 }
 
-.card__item-8 .card__image {
+.filter-hue-opacity {
   filter: hue-rotate(90deg) opacity(0.7);
 }
 
@@ -163,7 +157,11 @@
   color: var(--color-black);
   text-transform: uppercase;
   pointer-events: none;
-  text-shadow: none;
+  text-shadow:
+    1px 1px 0 var(--color-white),
+    -1px -1px 0 var(--color-white),
+    1px -1px 0 var(--color-white),
+    -1px 1px 0 var(--color-white);
 }
 
 @supports (mix-blend-mode: hard-light) and ((-webkit-text-stroke: 1px var(--color-white)) or (text-stroke: 1px var(--color-white))) {
@@ -171,7 +169,12 @@
     mix-blend-mode: hard-light;
     -webkit-text-stroke: 1px var(--color-white);
     text-stroke: 1px var(--color-white);
+    text-shadow: none;
   }
+}
+
+.button {
+  transition: box-shadow 0.3s ease;
 }
 
 .card__buttons {
@@ -210,17 +213,12 @@
   cursor: pointer;
 }
 
-.card__like-button:focus,
-.memory-button:focus,
-.modal__ok-btn:focus {
-  transition: box-shadow 0.3s ease;
+.button:focus {
   outline: none;
   box-shadow: 2px 2px 0 0 var(--color-black);
 }
 
-.card__like-button span,
-.memory-button span,
-.modal__ok-btn span {
+.button span {
   position: relative;
   z-index: 1;
   color: var(--color-white);
@@ -237,7 +235,6 @@
 
 .card__icon-button:focus {
   outline: none;
-  /* на всякий случай */
 }
 
 .card__icon-button:focus-visible {
@@ -313,34 +310,6 @@
   animation: flash-sparks 0.3s ease-in 0.3s 1 forwards;
 }
 
-@keyframes scale-heart {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.25);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes flash-sparks {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
 .memory-button .like-icon {
   position: relative;
   z-index: 1;
@@ -349,9 +318,7 @@
 
 }
 
-.card__like-button::before,
-.memory-button::before,
-.modal__ok-btn::before {
+.button-animated::before {
   content: '';
   position: absolute;
   top: 0;
@@ -364,9 +331,7 @@
   transition: transform 0.5s ease-in-out;
 }
 
-.card__like-button:hover::before,
-.memory-button:hover:before,
-.modal__ok-btn:hover:before {
+.button-animated:hover::before {
   transform: scaleX(1);
 }
 
@@ -389,9 +354,7 @@
 
 /* Добавляем размытие бекдропа */
 .modal[open]::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 /* Блокируем скролл при открытом меню */
@@ -440,14 +403,4 @@ body:has(.modal[open]) {
   font-weight: 400;
   font-size: 14px;
   line-height: 90%;
-}
-
-@keyframes likeAnimation {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: -135px 0;
-  }
 }
