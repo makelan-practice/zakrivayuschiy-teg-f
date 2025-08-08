@@ -14,7 +14,7 @@
         <link rel="icon" href="./images/favicon.ico" sizes="32x32" type="image/x-icon" />
         <link rel="icon" href="./images/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="./images/mobile-favicon.png" sizes="180x180" />
-        <link rel="preload" href="./svg/icons.svg" as="image" type="image/svg+xml">
+        <link rel="preload" href="./svg/icons.svg" as="image" type="image/svg+xml" />
     </head>
 
     <body class="page">
@@ -408,16 +408,16 @@
 
             <button type="button" class="button button-animated memory-button" onclick="window['dialog-id'].showModal()">
                 <svg width="28" height="28" aria-hidden="true">
-                  <use href="./svg/icons.svg#floppy-disk"></use>
+                    <use href="./svg/icons.svg#floppy-disk"></use>
                 </svg>
-              <span class="button__text">Сохранить на память</span>
+                <span class="button__text">Сохранить на память</span>
             </button>
 
             <dialog class="modal" id="dialog-id">
                 <div class="modal__content">
-                      <svg width="39" height="39" aria-hidden="true">
+                    <svg width="39" height="39" aria-hidden="true">
                         <use href="./svg/icons.svg#floppy-disk"></use>
-                      </svg>
+                    </svg>
                     <p class="modal__text">Вставьте дискету, чтобы продолжить</p>
 
                     <button type="button" class="button button-animated modal__ok-btn" onclick="window['dialog-id'].close()">

@@ -14,12 +14,12 @@
 
   display: flex;
   flex-direction: column;
-
+  gap: 100px;
+  margin-top: 100px;
   min-inline-size: 320px;
   min-block-size: 100dvb;
   font-family: var(--main-font);
   font-variation-settings: 'wght' var(--main-font-weight);
-
   background-image: var(--page-background);
   background-size: cover;
   background-attachment: fixed;
@@ -35,7 +35,6 @@
   gap: 20px;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 122px 0;
-  margin: 100px 0px;
   border: 2px solid var(--text-color);
 }
 
@@ -67,10 +66,7 @@
   flex-direction: column;
   background-color: var(--card-background);
   width: 100%;
-  /*overflow: hidden;*/
   border: 2px solid var(--text-color);
-  /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
-
 }
 
 .card__content {
@@ -83,11 +79,10 @@
 
 .card__label {
   font-family: var(--main-font);
-  font-weight: 715;
   font-size: 18px;
   line-height: 22px;
   margin: 4px 10px;
-  font-variation-settings: 'slnt' 0;
+  font-variation-settings: 'wght' var(--weight-label), 'slnt' 0;
   color: var(--text-color);
   align-self: flex-start;
 }
@@ -100,13 +95,11 @@
 
 .card__description {
   font-family: var(--main-font);
-  font-weight: 410;
   font-size: 18px;
   line-height: 21px;
-  font-variation-settings: 'slnt' 0;
+  font-variation-settings: 'wght' var(--weight-description), 'slnt' 0;
   color: var(--text-color);
   align-self: flex-start;
-  /*letter-spacing: 0.01em;*/
 }
 
 .card__image {
@@ -175,6 +168,10 @@
 
 .button {
   transition: box-shadow 0.3s ease;
+  min-height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card__buttons {
@@ -231,6 +228,9 @@
   transition: border-color 0.3s ease;
   background: none;
   padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card__icon-button:focus {
@@ -304,6 +304,7 @@
 }
 
 .like-icon.is-liked .heart {
+  transform-origin: center;
   animation: scale-heart 0.3s ease-in 0.1s 1 forwards;
 }
 
@@ -353,17 +354,14 @@
   left: 0;
 }
 
-/* Добавляем размытие бекдропа */
 .modal[open]::backdrop {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-/* Блокируем скролл при открытом меню */
 body:has(.modal[open]) {
   overflow: hidden;
 }
 
-/* Контент внутри модального окна */
 .modal__content {
   background-color: var(--color-white);
   border: 2px solid var(--color-black);
@@ -388,8 +386,11 @@ body:has(.modal[open]) {
   position: relative;
   grid-column: span 2;
   margin-top: 20px;
-  padding: 12.5px 0px;
   border: 2px solid var(--color-black);
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal__ok-btn-text {

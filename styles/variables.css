@@ -4,6 +4,8 @@
   --accent-font: 'PressStart2P', fantasy;
   --main-font-weight: 400;
   --title-font-weight: 785;
+  --weight-label: 715;
+  --weight-description: 410;
   --color-white: #FFFFFF;
   --color-black: #000000;
   --color-red: #ff0000;
@@ -17,16 +19,16 @@
 
   --page-background:
     repeating-linear-gradient(to right,
-      #d3d3d3,
-      #d3d3d3 2px,
+      #E7E7E7,
+      #E7E7E7 2px,
       transparent 2px,
       transparent 4px),
     repeating-linear-gradient(to bottom,
-      #d3d3d3,
-      #d3d3d3 2px,
+      #E7E7E7,
+      #E7E7E7 2px,
       transparent 2px,
       transparent 4px),
     linear-gradient(to bottom,
-      #e7e7e7 0.01%,
-      #1a1a1a);
+      #E7E7E7 0.01%,
+      #1A1A1A);
 }
