@@ -1,6 +1,5 @@
   .header {
     padding: 130px 0;
-    margin: 98px 0px;
   }
 
   .card__image {
@@ -8,6 +7,17 @@
   }
 
   .memory-button {
-    padding: 11.5px 13px;
+    padding: 0px 20px;
     flex-direction: row;
+    min-height: 55px;
+  }
+
+  .memory-button svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .overlay-text {
+    top: 3.5%;
+    right: 3.5%;
   }
